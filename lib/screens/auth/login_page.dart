@@ -110,6 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _emailController,
                     hint: 'email@gmail.com',
                     label: 'votre email',
+                    keyboardType: TextInputType.emailAddress,
                     prefixIcon: Icons.email_outlined,
                     validator: (v) => (v == null || !v.contains('@'))
                         ? 'email invalide'
@@ -140,6 +141,34 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  AuthTextField(
+                      controller: _passwordController,
+                      hint: '*******',
+                      label: 'Mot de passe',
+                      isPasswordd: true,
+                      prefixIcon: Icons.lock_outlined,
+                      validator: (v) => (v == null || v.length < 6)
+                          ? 'Minimum 6 cratceres'
+                          : null),
+                  // button de connexion
+                  SizedBox(
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: _loading ? null : _login,
+                       child: _loading ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                       ):
+                       const Text('Se connecter', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),)
+                       ),
                   )
                 ],
               )),
