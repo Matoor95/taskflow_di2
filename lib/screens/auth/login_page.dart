@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskflow_di2/screens/auth/register_page.dart';
 import 'package:taskflow_di2/screens/auth/widgets/auth_text_field.dart';
 import 'package:taskflow_di2/services/auth/auth_service.dart';
 
@@ -158,17 +159,65 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 48,
                     child: ElevatedButton(
-                      onPressed: _loading ? null : _login,
-                       child: _loading ? const SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
+                        onPressed: _loading ? null : _login,
+                        child: _loading
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const Text(
+                                'Se connecter',
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w600),
+                              )),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  // separateur
+                  Row(
+                    children: [
+                      const Expanded(
+                          child: Divider(
+                        color: borderColor,
+                      )),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          'Ou',
+                          style:
+                              TextStyle(color: Colors.grey[490], fontSize: 13),
                         ),
-                       ):
-                       const Text('Se connecter', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),)
-                       ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  // lien inscription
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Pas encore de compte ?',
+                        style: TextStyle(color: textSecondary, fontSize: 14),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const RegisterPage()),
+                                ),
+                                child: const Text('Creer un compte', style: TextStyle(color:indigo, fontSize: 14, fontWeight: FontWeight.w600),),
+                      )
+                    ],
                   )
                 ],
               )),
