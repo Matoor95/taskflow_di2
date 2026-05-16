@@ -178,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 24,
                   ),
-                  // lien d'inscription
+                  // separateur
                   Row(
                     children: [
                       const Expanded(
@@ -186,46 +186,39 @@ class _LoginPageState extends State<LoginPage> {
                         color: borderColor,
                       )),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Text(
-                          "ou",
-                          style:
-                              TextStyle(color: Colors.grey[400], fontSize: 13),
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Text(
+                            'ou',
+                            style: TextStyle(
+                                color: Colors.grey[400], fontSize: 13),
+                          )),
                       const Expanded(
                           child: Divider(
                         color: borderColor,
-                      ))
+                      )),
                     ],
                   ),
                   SizedBox(
                     height: 24,
                   ),
-                  // lien d'inscription
+                  // lien 'd'inscription
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Pas encore de compte',
+                        'Pas encore de compte ?',
                         style: TextStyle(color: textSecondary, fontSize: 14),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 4,
                       ),
                       GestureDetector(
                         onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const RegisterPage()),
-                        ),
-                        child: const Text(
-                          'Creer un compte',
-                          style: TextStyle(
-                              color: indigo,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600),
-                        ),
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const RegisterPage()),
+                                ),
+                                child: const Text('Creer un compte', style: TextStyle(color: indigo, fontSize: 14, fontWeight: FontWeight.w600),),
                       )
                     ],
                   )
